@@ -1,0 +1,12 @@
+C:\Dev\ArquiteturaDDD-API\ArquiteturaDDD\Domain\bin\Debug\net5.0\Domain.deps.json
+C:\Dev\ArquiteturaDDD-API\ArquiteturaDDD\Domain\bin\Debug\net5.0\Domain.dll
+C:\Dev\ArquiteturaDDD-API\ArquiteturaDDD\Domain\bin\Debug\net5.0\ref\Domain.dll
+C:\Dev\ArquiteturaDDD-API\ArquiteturaDDD\Domain\bin\Debug\net5.0\Domain.pdb
+C:\Dev\ArquiteturaDDD-API\ArquiteturaDDD\Domain\obj\Debug\net5.0\Domain.csproj.AssemblyReference.cache
+C:\Dev\ArquiteturaDDD-API\ArquiteturaDDD\Domain\obj\Debug\net5.0\Domain.GeneratedMSBuildEditorConfig.editorconfig
+C:\Dev\ArquiteturaDDD-API\ArquiteturaDDD\Domain\obj\Debug\net5.0\Domain.AssemblyInfoInputs.cache
+C:\Dev\ArquiteturaDDD-API\ArquiteturaDDD\Domain\obj\Debug\net5.0\Domain.AssemblyInfo.cs
+C:\Dev\ArquiteturaDDD-API\ArquiteturaDDD\Domain\obj\Debug\net5.0\Domain.csproj.CoreCompileInputs.cache
+C:\Dev\ArquiteturaDDD-API\ArquiteturaDDD\Domain\obj\Debug\net5.0\Domain.dll
+C:\Dev\ArquiteturaDDD-API\ArquiteturaDDD\Domain\obj\Debug\net5.0\ref\Domain.dll
+C:\Dev\ArquiteturaDDD-API\ArquiteturaDDD\Domain\obj\Debug\net5.0\Domain.pdb
