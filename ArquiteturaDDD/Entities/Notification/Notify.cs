@@ -9,6 +9,7 @@ namespace Entities.Notification
 {
     public class Notify
     {
+        private const string ERRORMESSAGE = "Campo Obrigatório";
         public Notify()
         {
             Notification = new List<Notify>();
@@ -33,7 +34,7 @@ namespace Entities.Notification
         {
             if (string.IsNullOrWhiteSpace(value) || string.IsNullOrWhiteSpace(propertyName))
             {
-                Notification.Add(new Notify { Message = "Campo Obrigatório", PropertyName = propertyName }); return false;
+                Notification.Add(new Notify { Message = ERRORMESSAGE, PropertyName = propertyName }); return false;
             }
 
             return true;
@@ -44,11 +45,11 @@ namespace Entities.Notification
         /// <param name="value"></param>
         /// <param name="propertyName"></param>
         /// <returns>true or false</returns>
-        public bool ValidateDecimaProperty(decimal value, string propertyName)
+        public bool ValidateDecimalProperty(decimal value, string propertyName)
         {
             if (value < 1 || string.IsNullOrWhiteSpace(propertyName))
             {
-                Notification.Add(new Notify { Message = "Campo Obrigatório", PropertyName = propertyName }); return false;
+                Notification.Add(new Notify { Message = ERRORMESSAGE, PropertyName = propertyName }); return false;
             }
 
             return true;

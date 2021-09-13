@@ -30,6 +30,10 @@ namespace Entities.Entites
         [DataType(DataType.Date, ErrorMessage ="Data Invalida")]
         public DateTime DateRegister { get; set; }
 
+        [Column("NTC_DATECHANGE")]
+        [DataType(DataType.Date, ErrorMessage = "Data Invalida")]
+        public DateTime DateChange { get; set; }
+
         [ForeignKey("AplicationUser")]
         [Column(Order = 1)]
         public string UserId {  get; set; }
