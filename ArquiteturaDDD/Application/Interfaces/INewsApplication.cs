@@ -1,10 +1,11 @@
-﻿using Entities.Entites;
+﻿using Application.Interfaces.Generics;
+using Entities.Entites;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
-namespace Domain.Interfaces.InterfaceServices
+namespace Application.Interfaces
 {
-    public interface INewsService 
+    public interface INewsApplication : IGenericsApplication<News>
     {
         Task AddNews(News news);
 

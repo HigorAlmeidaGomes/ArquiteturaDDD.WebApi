@@ -1,9 +1,9 @@
 ﻿using System.Collections.Generic;
 using System.Threading.Tasks;
 
-namespace Domain.Interfaces.Generics
+namespace Application.Interfaces.Generics
 {
-    public interface IGenerics<T> where T : class
+    public interface IGenericsApplication<T> where T : class
     {
         Task Add(T Objeto);
         Task Update(T Objeto);
@@ -13,6 +13,5 @@ namespace Domain.Interfaces.Generics
         Task<T> GetById(int id);
 
         Task<List<T>> GetAll();
-
     }
 }
