@@ -13,3 +13,11 @@ C:\Dev\ArquiteturaDDD-API\ArquiteturaDDD\Infrastructure\obj\Debug\net5.0\Infrast
 C:\Dev\ArquiteturaDDD-API\ArquiteturaDDD\Infrastructure\obj\Debug\net5.0\ref\Infrastructure.dll
 C:\Dev\ArquiteturaDDD-API\ArquiteturaDDD\Infrastructure\obj\Debug\net5.0\Infrastructure.pdb
 C:\Dev\ArquiteturaDDD-API\ArquiteturaDDD\Infrastructure\obj\Debug\net5.0\Infrastructure.genruntimeconfig.cache
+C:\Dev\ArquiteturaDDD-API\ArquiteturaDDD\Infrastructure\bin\Debug\net5.0\Entites\AplicationUser.cs
+C:\Dev\ArquiteturaDDD-API\ArquiteturaDDD\Infrastructure\bin\Debug\net5.0\Entites\News.cs
+C:\Dev\ArquiteturaDDD-API\ArquiteturaDDD\Infrastructure\bin\Debug\net5.0\Notification\Notify.cs
+C:\Dev\ArquiteturaDDD-API\ArquiteturaDDD\Infrastructure\bin\Debug\net5.0\Domain.dll
+C:\Dev\ArquiteturaDDD-API\ArquiteturaDDD\Infrastructure\bin\Debug\net5.0\Entities.dll
+C:\Dev\ArquiteturaDDD-API\ArquiteturaDDD\Infrastructure\bin\Debug\net5.0\Domain.pdb
+C:\Dev\ArquiteturaDDD-API\ArquiteturaDDD\Infrastructure\bin\Debug\net5.0\Entities.pdb
+C:\Dev\ArquiteturaDDD-API\ArquiteturaDDD\Infrastructure\obj\Debug\net5.0\Infrastructure.csproj.CopyComplete

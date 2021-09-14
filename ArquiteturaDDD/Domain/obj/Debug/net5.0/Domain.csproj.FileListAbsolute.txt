@@ -10,3 +10,9 @@ C:\Dev\ArquiteturaDDD-API\ArquiteturaDDD\Domain\obj\Debug\net5.0\Domain.csproj.C
 C:\Dev\ArquiteturaDDD-API\ArquiteturaDDD\Domain\obj\Debug\net5.0\Domain.dll
 C:\Dev\ArquiteturaDDD-API\ArquiteturaDDD\Domain\obj\Debug\net5.0\ref\Domain.dll
 C:\Dev\ArquiteturaDDD-API\ArquiteturaDDD\Domain\obj\Debug\net5.0\Domain.pdb
+C:\Dev\ArquiteturaDDD-API\ArquiteturaDDD\Domain\bin\Debug\net5.0\Entites\AplicationUser.cs
+C:\Dev\ArquiteturaDDD-API\ArquiteturaDDD\Domain\bin\Debug\net5.0\Entites\News.cs
+C:\Dev\ArquiteturaDDD-API\ArquiteturaDDD\Domain\bin\Debug\net5.0\Notification\Notify.cs
+C:\Dev\ArquiteturaDDD-API\ArquiteturaDDD\Domain\bin\Debug\net5.0\Entities.dll
+C:\Dev\ArquiteturaDDD-API\ArquiteturaDDD\Domain\bin\Debug\net5.0\Entities.pdb
+C:\Dev\ArquiteturaDDD-API\ArquiteturaDDD\Domain\obj\Debug\net5.0\Domain.csproj.CopyComplete

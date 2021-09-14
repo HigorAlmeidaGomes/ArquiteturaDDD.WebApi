@@ -1,11 +1,6 @@
 ﻿using Entities.Entites;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Infrastructure.Settings
 {
@@ -19,10 +14,27 @@ namespace Infrastructure.Settings
 
         public DbSet<AplicationUser> AplicationUser { get; set; }
 
-
-        private string ConectionDbBase() 
+        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            return "";
+            if (!optionsBuilder.IsConfigured)
+            {
+                optionsBuilder.UseSqlServer(ConectionDbBase());
+                base.OnConfiguring(optionsBuilder);
+            }
+        }
+
+        protected override void OnModelCreating(ModelBuilder builder)
+        {
+            builder.Entity<AplicationUser>().ToTable("AspNetUsers").HasKey(t => t.Id);
+
+            base.OnModelCreating(builder);
+        }
+
+        private string ConectionDbBase()
+        {
+            string strcon = "Data Source=HIGOR-PC\\SQLEXPRESS; Initial Catalog=ArquiteturaDDD-API; User Id=sa; Password=123456;";
+
+            return strcon;
         }
     }
 }

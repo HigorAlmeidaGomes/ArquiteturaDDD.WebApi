@@ -13,3 +13,6 @@ C:\Dev\ArquiteturaDDD-API\ArquiteturaDDD\Entities\obj\Debug\net5.0\Entities.dll
 C:\Dev\ArquiteturaDDD-API\ArquiteturaDDD\Entities\obj\Debug\net5.0\ref\Entities.dll
 C:\Dev\ArquiteturaDDD-API\ArquiteturaDDD\Entities\obj\Debug\net5.0\Entities.pdb
 C:\Dev\ArquiteturaDDD-API\ArquiteturaDDD\Entities\obj\Debug\net5.0\Entities.genruntimeconfig.cache
+C:\Dev\ArquiteturaDDD-API\ArquiteturaDDD\Entities\bin\Debug\net5.0\Entites\AplicationUser.cs
+C:\Dev\ArquiteturaDDD-API\ArquiteturaDDD\Entities\bin\Debug\net5.0\Entites\News.cs
+C:\Dev\ArquiteturaDDD-API\ArquiteturaDDD\Entities\bin\Debug\net5.0\Notification\Notify.cs
