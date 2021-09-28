@@ -31,7 +31,7 @@ namespace Infrastructure.Settings
 
         private string ConectionDbBase()
         {
-            string strcon = "Data Source=HIGOR-PC\\SQLEXPRESS; Initial Catalog=ArquiteturaDDD-API; User Id=sa; Password=123456;";
+            string strcon = "Data Source=HIGOR-PC\\SQLEXPRESS;Initial Catalog=ArquiteturaDDD-API;Integrated Security=False;User ID=sa;Password=123456;Connect Timeout=15;Encrypt=False;TrustServerCertificate=False";
 
             return strcon;
         }

@@ -78,3 +78,4 @@ C:\Dev\ArquiteturaDDD-API\ArquiteturaDDD\WebAPI\bin\Debug\net5.0\Entities.pdb
 C:\Dev\ArquiteturaDDD-API\ArquiteturaDDD\WebAPI\bin\Debug\net5.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll
 C:\Dev\ArquiteturaDDD-API\ArquiteturaDDD\WebAPI\bin\Debug\net5.0\Application.dll
 C:\Dev\ArquiteturaDDD-API\ArquiteturaDDD\WebAPI\bin\Debug\net5.0\Application.pdb
+C:\Dev\ArquiteturaDDD-API\ArquiteturaDDD\WebAPI\obj\Debug\net5.0\WebAPI.csproj.CopyComplete

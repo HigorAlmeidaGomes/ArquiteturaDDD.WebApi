@@ -1,12 +1,15 @@
 ﻿using Application.Interfaces;
 using Entities.Entites;
+using Entities.Enum;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.WebUtilities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text;
 using System.Threading.Tasks;
 using WebAPI.Models;
 using WebAPI.Token;
@@ -102,6 +105,52 @@ namespace WebAPI.Controllers
 
             else return BadRequest("Erro ao criar o token");
         }
+
+        /// <summary>
+        /// Adicionar identidade do usuário
+        /// </summary>
+        /// <param name="login"></param>
+        /// <returns></returns>
+        /// <response code="200">OK</response>
+        /// <response code="400">BadRequest</response>
+        /// <response code="401">Unauthorized</response>
+        [AllowAnonymous]
+        [Produces("applicatio/json")]
+        [HttpPost("/api/AddUserIdentity")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(StatusCodes.Status401Unauthorized)]
+        public async Task<IActionResult> AddUserIdentity([FromBody] Login login)
+        {
+            if (string.IsNullOrEmpty(login.Email) || string.IsNullOrEmpty(login.Password)) return Unauthorized();
+
+            var parametrs = new AplicationUser
+            {
+                Age = login.Age,
+                Email = login.Email,
+                Cellphone = login.Cellphone,
+                Type = UserType.Common
+            };
+
+            var result = await _userManager.CreateAsync(parametrs, login.Password);
+
+            if (result.Errors.Any()) return NotFound(result.Errors.Any().ToString());
+
+            //Geração de confirmação do e-mail. 
+            var userId = await _userManager.GetUserIdAsync(parametrs);
+            var code = await _userManager.GenerateEmailConfirmationTokenAsync(parametrs);
+            code = WebEncoders.Base64UrlEncode(Encoding.UTF8.GetBytes(code));
+
+            //Retorno de confirmação do e-mail
+            code = Encoding.UTF8.GetString(WebEncoders.Base64UrlDecode(code));
+            var resultEmail = await _userManager.ConfirmEmailAsync(parametrs, code);
+
+            if (resultEmail.Succeeded) return Ok(resultEmail.Succeeded.ToString());
+
+            else return BadRequest(resultEmail.ToString());
+        }
+
+
         /// <summary>
         /// Criação do token para o usuário
         /// </summary>
