@@ -38,7 +38,7 @@ namespace WebAPI
 
             services.AddDbContext<Context>(options =>
                                            options.UseSqlServer(
-                                                   Configuration.GetConnectionString("DefautConnection")));
+                                                   Configuration.GetConnectionString("DefaultConnection")));
             services.AddDefaultIdentity<AplicationUser>(options =>
                                         options.SignIn.RequireConfirmedAccount = false)
                                        .AddEntityFrameworkStores<Context>();
