@@ -5,5 +5,7 @@ namespace Domain.Interfaces
     public interface IUser
     {
         Task<bool> AddUser(string email, string password, int age, string cellPhone);
+
+        Task<bool> ThereIsUser(string email, string password);
     }
 }

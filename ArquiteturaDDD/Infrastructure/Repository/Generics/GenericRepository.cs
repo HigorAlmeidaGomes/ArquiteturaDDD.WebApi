@@ -22,33 +22,31 @@ namespace Infrastructure.Repository.Generics
 
         public async Task Add(T Objeto)
         {
-            using (var data = new Context(_dbContextBuilder))
+
+            try
             {
-                try
-                {
-                    await data.Set<T>().AddAsync(Objeto);
-                    await data.SaveChangesAsync();
-                }
-                catch (Exception ex)
-                {
-                    throw new ArgumentNullException(paramName: nameof(ex), message: "Erro ao tentar Adicionar");
-                }
+                using var data = new Context(_dbContextBuilder);
+                await data.Set<T>().AddAsync(Objeto);
+                await data.SaveChangesAsync();
             }
+            catch (Exception ex)
+            {
+                throw new ArgumentNullException(paramName: nameof(ex), message: "Erro ao tentar Adicionar");
+            }
+
         }
 
         public async Task Delete(T Objeto)
         {
-            using (var data = new Context(_dbContextBuilder))
+            try
             {
-                try
-                {
-                    data.Set<T>().Remove(Objeto);
-                    await data.SaveChangesAsync();
-                }
-                catch (Exception ex)
-                {
-                    throw new ArgumentNullException(paramName: nameof(ex), message: "Erro ao tentar excluir");
-                }
+                using var data = new Context(_dbContextBuilder);
+                data.Set<T>().Remove(Objeto);
+                await data.SaveChangesAsync();
+            }
+            catch (Exception ex)
+            {
+                throw new ArgumentNullException(paramName: nameof(ex), message: "Erro ao tentar excluir");
             }
         }
 
@@ -131,6 +129,7 @@ namespace Infrastructure.Repository.Generics
 
             disposed = true;
         }
+
         #endregion
     }
 }

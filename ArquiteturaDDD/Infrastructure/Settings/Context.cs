@@ -9,7 +9,6 @@ namespace Infrastructure.Settings
         public Context(DbContextOptions<Context> options) : base(options)
         {
         }
-
         public DbSet<News> News { get; set; }
 
         public DbSet<AplicationUser> AplicationUser { get; set; }

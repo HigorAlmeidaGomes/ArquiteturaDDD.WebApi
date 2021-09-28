@@ -13,6 +13,6 @@ namespace Domain.Interfaces.Generics
         Task<T> GetById(int id);
 
         Task<List<T>> GetAll();
-
+     
     }
 }
