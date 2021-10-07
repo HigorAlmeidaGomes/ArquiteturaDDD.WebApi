@@ -47,7 +47,7 @@ namespace Infrastructure.Repository
             {
                 using (var data = new Context(_dbContextBuilder))
                 {
-                    return await data.AplicationUser.Where(x => x.Email.Equals(email)).AsNoTracking().AnyAsync();
+                    return await data.AplicationUser.Where(x => x.Email.Equals(email) && x.PasswordHash.Equals(password)).AsNoTracking().AnyAsync();
                 }
 
             }
@@ -58,6 +58,23 @@ namespace Infrastructure.Repository
                 return false;
             }
 
+        }
+
+        public async Task<string> UserIdReturn(string email)
+        {
+            try
+            {
+                using var data = new Context(_dbContextBuilder);
+
+                var user = await data.AplicationUser.Where(x => x.Email.Equals(email)).AsNoTracking().FirstOrDefaultAsync();
+
+                return user.Id;
+
+            }
+            catch (Exception ex)
+            {
+                throw new ArgumentNullException(paramName: nameof(ex), message: "Erro ao tentar retornar o Id do usuário. ");
+            }
         }
     }
 }

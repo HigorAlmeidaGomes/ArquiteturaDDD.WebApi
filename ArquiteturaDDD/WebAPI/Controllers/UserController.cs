@@ -9,6 +9,7 @@ using Microsoft.AspNetCore.WebUtilities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 using WebAPI.Models;
@@ -41,7 +42,7 @@ namespace WebAPI.Controllers
         /// <response code="200">OK</response>
         /// <response code="401">Unauthorized</response>
         [AllowAnonymous]
-        [Produces("applicatio/json")]
+        [Produces("application/json")]
         [HttpPost("/api/CreateToken")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status401Unauthorized)]
@@ -51,7 +52,12 @@ namespace WebAPI.Controllers
 
             var IsValidUser = await _iuserApplication.ThereIsUser(login.Email, login.Password);
 
-            if (IsValidUser) return TokenJwt();
+            if (IsValidUser)
+            {
+                var userId = await _iuserApplication.UserIdReturn(login.Email);
+
+                return Ok(TokenJwt(userId));
+            }
 
             else return Unauthorized();
         }
@@ -65,7 +71,7 @@ namespace WebAPI.Controllers
         /// <response code="400">BadRequest</response>
         /// <response code="401">Unauthorized</response>
         [AllowAnonymous]
-        [Produces("applicatio/json")]
+        [Produces("application/json")]
         [HttpPost("/api/AddUser")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
@@ -90,7 +96,7 @@ namespace WebAPI.Controllers
         /// <response code="400">BadRequest</response>
         /// <response code="401">Unauthorized</response>
         [AllowAnonymous]
-        [Produces("applicatio/json")]
+        [Produces("application/json")]
         [HttpPost("/api/CreateTokenIdentity")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
@@ -99,11 +105,16 @@ namespace WebAPI.Controllers
         {
             if (string.IsNullOrEmpty(login.Email) || string.IsNullOrEmpty(login.Password)) return Unauthorized();
 
-            var result = await _signInManager.PasswordSignInAsync(login.Email, login.Password, false, false);
+            var result = await _signInManager.PasswordSignInAsync(login.Email, login.Password, false, lockoutOnFailure: false);
 
-            if (result.Succeeded) return TokenJwt();
+            if (result.Succeeded)
+            {
+                var userId = await _iuserApplication.UserIdReturn(login.Email);
 
+                return Ok(TokenJwt(userId));
+            }
             else return BadRequest("Erro ao criar o token");
+
         }
 
         /// <summary>
@@ -115,7 +126,7 @@ namespace WebAPI.Controllers
         /// <response code="400">BadRequest</response>
         /// <response code="401">Unauthorized</response>
         [AllowAnonymous]
-        [Produces("applicatio/json")]
+        [Produces("application/json")]
         [HttpPost("/api/AddUserIdentity")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
@@ -129,12 +140,13 @@ namespace WebAPI.Controllers
                 Age = login.Age,
                 Email = login.Email,
                 Cellphone = login.Cellphone,
-                Type = UserType.Common
+                Type = UserType.Common,
+                UserName = login.Email.Remove(5)
             };
 
             var result = await _userManager.CreateAsync(parametrs, login.Password);
 
-            if (result.Errors.Any()) return NotFound(result.Errors.Any().ToString());
+            if (result.Errors.Any()) return BadRequest(string.Concat("Erro ao adicionar o usuário. ", result.Errors.ToList()[0].Description));
 
             //Geração de confirmação do e-mail. 
             var userId = await _userManager.GetUserIdAsync(parametrs);
@@ -145,24 +157,24 @@ namespace WebAPI.Controllers
             code = Encoding.UTF8.GetString(WebEncoders.Base64UrlDecode(code));
             var resultEmail = await _userManager.ConfirmEmailAsync(parametrs, code);
 
-            if (resultEmail.Succeeded) return Ok(resultEmail.Succeeded.ToString());
+            if (resultEmail.Succeeded) return Ok(string.Concat("Usuario ",parametrs.UserName, " Adicionado Com Sucesso! "));
+
 
             else return BadRequest(resultEmail.ToString());
         }
-
 
         /// <summary>
         /// Criação do token para o usuário
         /// </summary>
         /// <returns>Retonar o token criado</returns>
-        private IActionResult TokenJwt()
+        private IActionResult TokenJwt([Optional] string userId)
         {
             var token = new TokenJwtBuilder()
                         .AddSecurityKey(JwtSecurityKey.Create("Secret_Key-12345678"))
                         .AddSubject("Empresa - Marias Fi-Fi")
                         .AddIssuer("Teste.Securiy.Bearer")
                         .AddAudience("Teste.Securiy.Bearer")
-                        .AddClaim("UsuarioAPINumero", "1")
+                        .AddClaim("userId", userId != string.Empty ? userId : "1")
                         .AddExpiry(30)
                         .Builder();
 

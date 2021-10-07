@@ -34,6 +34,7 @@ namespace Domain.Services
                 await _Inews.Add(news);
             }
         }
+        
         /// <summary>
         /// Obter Todas as notícias
         /// </summary>

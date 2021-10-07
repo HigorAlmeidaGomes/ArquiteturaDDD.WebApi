@@ -7,5 +7,7 @@ namespace Domain.Interfaces
         Task<bool> AddUser(string email, string password, int age, string cellPhone);
 
         Task<bool> ThereIsUser(string email, string password);
+
+        Task<string> UserIdReturn(string email);
     }
 }

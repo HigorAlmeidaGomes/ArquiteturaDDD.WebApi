@@ -26,5 +26,10 @@ namespace Application.Applications
         {
             return await _user.ThereIsUser(email, password);
         }
+
+        public async Task<string> UserIdReturn(string email)
+        {
+            return await _user.UserIdReturn(email);
+        }
     }
 }
